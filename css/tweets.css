@@ -1,0 +1,265 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #eee;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 1em;
+	line-height: 1.4em;
+}
+
+h1,h2,h3,h4 { clear: left; }
+
+h1,h2  { margin: 1em 0; }
+h3 { margin: 1em 0 0.5em 0; }
+
+h4 {
+	margin: 1em 0 0.25em 0;
+	font-size: 1.25em;
+}
+
+p { margin: 0; }
+
+a {
+	color: #47a;
+	text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+a.int {
+	color: #333;
+	font-weight: bold;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	padding-left: 1.25em;
+}
+
+ol {
+	margin: 0;
+	padding: 0;
+	padding-left: 1.5em;
+}
+
+
+/* Tabs */
+
+#header {
+	overflow: hidden;
+	top: 0; left: 0;
+	width: 100%;
+	height: 2.75em;
+	background-color: #333;
+} 
+
+#tabs {
+	width: 35em;
+	margin: 0 auto;
+}
+
+#tabs h1 {
+	float: left;
+	margin: 0;
+	padding: 0.5em 1em;
+	color: #fff;
+	font-size: 1.5em;
+}
+
+#tabs ul {
+	margin: 0;
+	padding: 0;
+}
+
+#tabs li {
+	display: list-item;
+	float: left;
+	list-style: none;
+	margin: 0 0.25em;
+	padding: 0;
+	font-weight: bold;
+}
+
+#tabs li a {
+	display: inline-block;
+	margin: 0;
+	padding: 0.75em 0.5em;
+	color: #fff;
+	text-decoration: none;
+}
+
+#tabs li a:hover, #here a {
+	background-color: #69c;
+	border: none;
+}
+
+
+/* Container */
+
+div.container {
+	width: 32em;
+	margin: 0 auto;
+	padding: 1.5em;
+	padding-top: 0.5em;
+	background: #fff;
+}
+
+
+/* Home page */
+
+#graph, #graph-convention { height: 12em; }
+
+#days h3 { margin-top: 2em; }
+
+#days h4 {
+	margin: 1em 0;
+	font-size: 1em;
+}
+
+#ribbon {
+	position: absolute;
+	top: 2.75em;
+	right: 0;
+}
+
+#ribbon img { border: 0; }
+
+
+/* Calender */
+
+div.month {
+	float: left;
+	margin: 1em 2em 2em 0;
+	padding: 0.5em 0.75em;
+	color: #999;
+	background-color: #eee;
+	font-size: 0.9em;
+	-webkit-border-radius: 0.5em;
+	   -moz-border-radius: 0.5em;
+	     -o-border-radius: 0.5em;
+	        border-radius: 0.5em;
+}
+
+div.week { clear:left; }
+
+div.title {
+	color: #333;
+	font-weight: bold;
+	text-align: center;
+}
+
+div.day {
+	float: left;
+	width: 1.75em;
+	text-align: center;
+}
+
+div.month a { color: #333; }
+div.month a:hover { font-weight: bold; }
+
+div.seattle { background-color: #ff3; }
+div.out { color: #ccc; }
+
+/* Tweets */
+
+div.tweet {
+	clear: left;
+	margin: 1em 0;
+	padding: 0.75em;
+	padding-bottom: 0.25em;
+	color: #000;
+	background-color: #eee;
+	font-size: 1.1em;
+	-webkit-border-radius: 0.5em;
+	   -moz-border-radius: 0.5em;
+	     -o-border-radius: 0.5em;
+	        border-radius: 0.5em;
+}
+
+p.name { margin-bottom: 0.1em; }
+p.info { font-size: 0.85em; }
+p.image { margin-top: 0.25em; }
+p.details { margin-bottom: 1em; }
+
+div.avatar { float: left; }
+div.link { display: none; float: right; }
+div.link a { color: #999; }
+
+div.tweet:hover div.link { display: block; }
+
+p.name a { color: #222; }
+p.info a { color: #999; }
+
+div.tweet p { margin-left: 60px; }
+
+span.count {
+	color: #999;
+	font-size: 0.9em;
+}
+
+
+/* People */
+
+div.person, div.tag {
+	clear: left;
+	color: #666;
+	font-size: 0.9em;
+	line-height: 1.2em;
+}
+
+div.person { padding-bottom: 1em; }
+div.person p { margin-left: 60px; }
+
+
+/* Tags */
+
+h4 a { color: #333; }
+div.tag p { margin-left: 1em; }
+
+
+/* Links */
+
+li { margin: 0.25em 0; }
+
+p.link {
+	width: 85%;
+	line-height: 1.3em;
+	word-wrap: break-word;
+}
+
+span.request { color: #999; }
+
+/* Media */
+
+p.image img	{
+	padding: 3px;
+	background-color: #fff;
+}
+
+
+/* Footer */
+
+#footer {
+	clear: left;
+	margin-top: 1.5em;
+	padding-top: 1em;
+	color: #666;
+	border-top: solid 1px #ccc;
+}
+
+#footer a {
+	color: #666;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#footer a:hover { text-decoration: underline; }
+
+#space { clear: left; }
+#yesterday { float: left; }
+#tomorrow { float: right; }
+
+#footer p.top { margin-top: 0.5em; }
+
+#days #footer p.top { margin-top: 0; text-align: center; }
