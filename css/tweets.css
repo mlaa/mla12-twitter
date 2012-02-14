@@ -1,5 +1,6 @@
 body {
-	margin: 0;
+	width: 35em;
+	margin: 0 auto;
 	padding: 0;
 	background: #eee;
 	font-family: Helvetica, Arial, sans-serif;
@@ -7,15 +8,13 @@ body {
 	line-height: 1.4em;
 }
 
-h1,h2,h3,h4 { clear: left; }
-
-h1,h2  { margin: 1em 0; }
-h3 { margin: 1em 0 0.5em 0; }
-
-h4 {
-	margin: 1em 0 0.25em 0;
-	font-size: 1.25em;
+h1,h2,h3,h4 {
+	margin: 1em 0;
+	clear: left;
 }
+
+h3 { margin-bottom: 0.5em 0; }
+h4 { margin-bottom: 0.25em 0; }
 
 p { margin: 0; }
 
@@ -46,17 +45,10 @@ ol {
 
 /* Tabs */
 
-#header {
-	overflow: hidden;
-	top: 0; left: 0;
-	width: 100%;
-	height: 2.75em;
-	background-color: #333;
-} 
-
 #tabs {
-	width: 35em;
-	margin: 0 auto;
+	height: 2.75em;
+	overflow: hidden;
+	background-color: #333;
 }
 
 #tabs h1 {
@@ -65,44 +57,46 @@ ol {
 	padding: 0.5em 1em;
 	color: #fff;
 	font-size: 1.5em;
+	font-weight: normal;
 }
 
 #tabs ul {
 	margin: 0;
 	padding: 0;
+	background-color: #333;
 }
 
-#tabs li {
+#tabs ul li {
 	display: list-item;
-	float: left;
 	list-style: none;
-	margin: 0 0.25em;
+	margin: 0;
 	padding: 0;
 	font-weight: bold;
 }
 
-#tabs li a {
-	display: inline-block;
-	margin: 0;
-	padding: 0.75em 0.5em;
+#tabs ul li a {
+	float: left;
+	padding: 0.75em;
 	color: #fff;
 	text-decoration: none;
 }
 
-#tabs li a:hover, #here a {
-	background-color: #69c;
-	border: none;
-}
+#tabs li a:hover { background-color: #7ad; }
+#here a { background-color: #69c; }
 
 
-/* Container */
+/* Global */
 
 div.container {
-	width: 32em;
-	margin: 0 auto;
+	clear: left;
 	padding: 1.5em;
 	padding-top: 0.5em;
 	background: #fff;
+}
+
+span.count {
+	color: #999;
+	font-size: 0.9em;
 }
 
 
@@ -111,19 +105,7 @@ div.container {
 #graph, #graph-convention { height: 12em; }
 
 #days h3 { margin-top: 2em; }
-
-#days h4 {
-	margin: 1em 0;
-	font-size: 1em;
-}
-
-#ribbon {
-	position: absolute;
-	top: 2.75em;
-	right: 0;
-}
-
-#ribbon img { border: 0; }
+#days h4 { margin-bottom: 1em; }
 
 
 /* Calender */
@@ -161,6 +143,12 @@ div.month a:hover { font-weight: bold; }
 div.seattle { background-color: #ff3; }
 div.out { color: #ccc; }
 
+
+/* Days */
+
+#days #footer p.top { margin-top: 0; text-align: center; }
+
+
 /* Tweets */
 
 div.tweet {
@@ -193,11 +181,6 @@ p.info a { color: #999; }
 
 div.tweet p { margin-left: 60px; }
 
-span.count {
-	color: #999;
-	font-size: 0.9em;
-}
-
 
 /* People */
 
@@ -214,7 +197,9 @@ div.person p { margin-left: 60px; }
 
 /* Tags */
 
-h4 a { color: #333; }
+#tags h4 { font-size: 1.25em; }
+#tags h4 a { color: #333; }
+
 div.tag p { margin-left: 1em; }
 
 
@@ -229,6 +214,7 @@ p.link {
 }
 
 span.request { color: #999; }
+
 
 /* Media */
 
@@ -255,11 +241,8 @@ p.image img	{
 }
 
 #footer a:hover { text-decoration: underline; }
+#footer p.top { margin-top: 0.5em; }
 
 #space { clear: left; }
 #yesterday { float: left; }
 #tomorrow { float: right; }
-
-#footer p.top { margin-top: 0.5em; }
-
-#days #footer p.top { margin-top: 0; text-align: center; }

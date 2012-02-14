@@ -5,7 +5,9 @@
 
     <xsl:param name="root">/tweets/</xsl:param>
 
-
+    <xsl:variable name="local-users" select="/tweets/tweet/from_user"/>
+    
+    
     <xsl:template match="tweets">
 
         <!-- Home page -->
@@ -17,7 +19,7 @@
                 <xsl:with-param name="mode">days</xsl:with-param>
 
                 <xsl:with-param name="title">
-                    <h2>#mla12 Twitter Archive</h2>
+                    <h2>Twitter Archive</h2>
                 </xsl:with-param>
                 
                 <xsl:with-param name="content">
@@ -151,9 +153,7 @@
                     <xsl:variable name="data-convention">
                         <xsl:for-each-group select="tweet" group-by="substring(created_at, 1, 10)"><xsl:sort select="current-grouping-key()" data-type="number" order="ascending"/><xsl:if test="number(current-grouping-key()) &gt;= 2012010400 and number(current-grouping-key()) &lt;= 2012010923">[<xsl:sequence select="((xs:dateTime(concat(substring(current-grouping-key(),1,4),'-',substring(current-grouping-key(),5,2),'-',substring(current-grouping-key(),7,2),'T',substring(current-grouping-key(),9,2),':00:00'))-xs:dateTime('1970-01-01T00:00:00')) div xs:dayTimeDuration('PT1S'))*1000"/>,<xsl:value-of select="count(current-group())"/>]<xsl:if test="number(current-grouping-key()) &lt; 2012010923">,</xsl:if></xsl:if></xsl:for-each-group>
                     </xsl:variable>
-                    
-                    <div id="ribbon"><a href="http://github.com/mlaa/mla12-twitter"><img src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub"/></a></div>
-                    
+                                       
                     <script id="source">
                         $(function () {
                             var t=[<xsl:value-of select="$data-all"/>];
@@ -168,7 +168,7 @@
                 <xsl:with-param name="head">
                     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
                     <script src="{$root}js/jquery.flot.min.js"></script>
-                    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="excanvas.min.js"></script><![endif]-->
+                    <xsl:comment>[if lte IE 8]</xsl:comment><script language="javascript" type="text/javascript" src="{$root}js/excanvas.min.js"></script><xsl:comment>[endif]</xsl:comment>
                 </xsl:with-param>
 
                 <xsl:with-param name="footer">
@@ -222,9 +222,14 @@
                                 <div id="tomorrow"><a href="{$root}days/{$tomorrow}.html"><xsl:call-template name="date-formatter"><xsl:with-param name="date" select="$tomorrow"/><xsl:with-param name="type">day-short</xsl:with-param></xsl:call-template> →</a></div>
                             </xsl:if>
 
-                            <xsl:if test="count(current-group()) &gt; 15">
-                                <p class="top"><a href="#header">Back to top ↑</a></p>
-                            </xsl:if>
+                            <xsl:choose>
+                                <xsl:when test="count(current-group()) &gt; 15">
+                                    <p class="top"><a href="#header">Back to top ↑</a></p>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <p class="top">&#160;</p>
+                                </xsl:otherwise>
+                            </xsl:choose>
                             
                         </div>
 
@@ -468,8 +473,7 @@
                                 <xsl:if test="number($tweets) &gt; 1">
                                     
                                     <p>
-                                        <xsl:value-of select="$tweets"/> tweets
-                                        <xsl:if test="number($head-count) &gt; 1">, 
+                                        <xsl:value-of select="$tweets"/> tweets<xsl:if test="number($head-count) &gt; 1">, 
                                             <xsl:value-of select="$head-count"/> people</xsl:if><xsl:if test="number($links) &gt; 0">, 
                                                 <xsl:value-of select="$links"/> link<xsl:if test="number($links) &gt; 1">s</xsl:if></xsl:if><xsl:if test="number($images) &gt; 0">, 
                                                     <xsl:value-of select="$images"/> image<xsl:if test="number($images) &gt; 1">s</xsl:if></xsl:if><xsl:if test="number($videos) &gt; 0">, 
@@ -688,13 +692,12 @@
         <xsl:param name="head"/>
         <xsl:param name="footer"/>
         
-        <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
         <html>
             
             <head>
                 
                 <meta charset="utf-8"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
                 <link rel="stylesheet" type="text/css" href="{$root}css/tweets.css"/>
                 <link rel="shortcut icon" href="/favicon.ico"/>
@@ -707,19 +710,15 @@
             
             <body>
                 
-                <div id="header">
-
-                    <div id="tabs">
-                        <h1>#mla12</h1>
-                        <ul>
-                            <li><xsl:if test="$mode = 'days'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}">Tweets</a></li>
-                            <li><xsl:if test="$mode = 'people'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}people/">People</a></li>
-                            <li><xsl:if test="$mode = 'tags'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}tags/">Tags</a></li>
-                            <li><xsl:if test="$mode = 'links'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}links/">Links</a></li>
-                            <li><xsl:if test="$mode = 'media'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}media/">Media</a></li>
-                        </ul>
-                    </div>
-                    
+                <div id="tabs">
+                    <h1>#mla12</h1>
+                    <ul>
+                        <li><xsl:if test="$mode = 'days'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}">Tweets</a></li>
+                        <li><xsl:if test="$mode = 'people'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}people/">People</a></li>
+                        <li><xsl:if test="$mode = 'tags'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}tags/">Tags</a></li>
+                        <li><xsl:if test="$mode = 'links'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}links/">Links</a></li>
+                        <li><xsl:if test="$mode = 'media'"><xsl:attribute name="id">here</xsl:attribute></xsl:if><a href="{$root}media/">Media</a></li>
+                    </ul>
                 </div>
                 
                 <div id="{$mode}" class="container">
@@ -757,7 +756,12 @@
                                     <xsl:matching-substring><a class="int"><xsl:attribute name="href"><xsl:value-of select="$root"/><xsl:if test="translate(regex-group(1), 'MLA', 'mla') != 'mla12'">tags/<xsl:value-of select="translate(regex-group(1), '-', '')"/>.html</xsl:if></xsl:attribute>#<xsl:value-of select="regex-group(1)" disable-output-escaping="yes"/></a></xsl:matching-substring>
                                     <xsl:non-matching-substring>
                                         <xsl:analyze-string select="." regex="@([^&apos;&quot; ]+[^\.\?!/,:;&apos;&quot; ])">
-                                            <xsl:matching-substring><a href="{$root}people/{regex-group(1)}.html" class="int">@<xsl:value-of select="regex-group(1)" disable-output-escaping="yes"/></a></xsl:matching-substring>
+                                            <xsl:matching-substring>
+                                                <xsl:choose>
+                                                    <xsl:when test="$local-users[. = regex-group(1)]"><a href="{$root}people/{regex-group(1)}.html" class="int">@<xsl:value-of select="regex-group(1)" disable-output-escaping="yes"/></a></xsl:when>
+                                                    <xsl:otherwise>@<xsl:value-of select="regex-group(1)" disable-output-escaping="yes"/></xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:matching-substring>
                                             <xsl:non-matching-substring><xsl:value-of select="." disable-output-escaping="yes"/></xsl:non-matching-substring>
                                         </xsl:analyze-string>
                                     </xsl:non-matching-substring>
@@ -876,7 +880,6 @@
                 </xsl:for-each-group>
             </xsl:with-param>            
         </xsl:call-template>
-
 
     </xsl:template>
 
