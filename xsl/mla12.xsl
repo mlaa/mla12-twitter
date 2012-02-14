@@ -224,7 +224,7 @@
 
                             <xsl:choose>
                                 <xsl:when test="count(current-group()) &gt; 15">
-                                    <p class="top"><a href="#header">Back to top ↑</a></p>
+                                    <p class="top"><a href="#tabs">Back to top ↑</a></p>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <p class="top">&#160;</p>
@@ -294,7 +294,7 @@
                 
                 <xsl:with-param name="footer">
                     <div id="footer">
-                        <p class="top"><a href="#header">Back to top ↑</a></p>
+                        <p class="top"><a href="#tabs">Back to top ↑</a></p>
                     </div>
                 </xsl:with-param>
                 
@@ -350,7 +350,7 @@
                             <p><a href="http://twitter.com/{current-grouping-key()}">Visit @<xsl:value-of select="current-grouping-key()"/> at Twitter.</a></p>
                             
                             <xsl:if test="number($tweets) &gt; 15">
-                                <p class="top"><a href="#header">Back to top ↑</a></p>
+                                <p class="top"><a href="#tabs">Back to top ↑</a></p>
                             </xsl:if>
                             
                         </div>
@@ -423,7 +423,7 @@
                 
                 <xsl:with-param name="footer">
                     <div id="footer">
-                        <p><a href="#header">Back to top ↑</a></p>
+                        <p><a href="#tabs">Back to top ↑</a></p>
                     </div>
                 </xsl:with-param>
                 
@@ -485,7 +485,7 @@
                                 <p><a href="https://twitter.com/#!/search?q=%23{current-grouping-key()}">Search for #<xsl:value-of select="current-grouping-key()"/> at Twitter.</a></p>
                                 
                                 <xsl:if test="number($tweets) &gt; 15">
-                                    <p class="top"><a href="#header">Back to top ↑</a></p>
+                                    <p class="top"><a href="#tabs">Back to top ↑</a></p>
                                 </xsl:if>
                                 
                             </div>
@@ -611,7 +611,7 @@
                             people
                         </p>
 
-                        <p class="top"><a href="#header">Back to top ↑</a></p>
+                        <p class="top"><a href="#tabs">Back to top ↑</a></p>
                         
                     </div>
                     
@@ -669,7 +669,7 @@
                             people
                         </p>
                         
-                        <p class="top"><a href="#header">Back to top ↑</a></p>
+                        <p class="top"><a href="#tabs">Back to top ↑</a></p>
 
                     </div>
 
