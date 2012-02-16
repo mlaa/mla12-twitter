@@ -143,8 +143,13 @@
                     <div id="graph"></div>
                     <h4>4 January – 9 January, Hourly</h4>
                     <div id="graph-convention"></div>
+                    <h3>Word cloud</h3>
+                    <p><a href="{$root}img/mla12_words.png"><img src="{$root}img/mla12_words.small.png" height="201" width="450" border="1" alt="#mla12 word cloud"/></a></p>
                     <h3>Thanks</h3>
                     <p>Many thanks are due to <a href="http://twitter.com/samplereality">Mark Sample</a>, <a href="http://mashe.hawksey.info/2012/01/twitter-archive-tagsv3/">Martin Hawksey</a>, and <a href="http://www.jenmichaels.net/blog/?p=622">Jen Michaels</a> for contributions to this archive.</p>
+                    <h3>Data and source code</h3>
+                    <p>The XML and XSL used to generate this archive are <a href="http://github.com/mlaa/mla12-twitter">available on Github</a>.</p>
+                    <p>&#160;</p>
 
                     <xsl:variable name="data-all">
                         <xsl:for-each-group select="tweet" group-by="substring(created_at, 1, 8)"><xsl:sort select="current-grouping-key()" data-type="number" order="ascending"/>[<xsl:sequence select="((xs:dateTime(concat(substring(current-grouping-key(),1,4),'-',substring(current-grouping-key(),5,2),'-',substring(current-grouping-key(),7,2),'T00:00:00'))-xs:dateTime('1970-01-01T00:00:00')) div xs:dayTimeDuration('PT1S'))*1000"/>,<xsl:value-of select="count(current-group())"/>]<xsl:if test="position() != last()">,</xsl:if></xsl:for-each-group>
@@ -169,10 +174,6 @@
                     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
                     <script src="{$root}js/jquery.flot.min.js"></script>
                     <xsl:comment>[if lte IE 8]</xsl:comment><script language="javascript" type="text/javascript" src="{$root}js/excanvas.min.js"></script><xsl:comment>[endif]</xsl:comment>
-                </xsl:with-param>
-
-                <xsl:with-param name="footer">
-                    <div id="footer"><p>The XML and XSL used to generate this archive are <a href="http://github.com/mlaa/mla12-twitter">available on Github</a>.</p></div>
                 </xsl:with-param>
 
             </xsl:call-template>
