@@ -172,8 +172,8 @@
                 
                 <xsl:with-param name="head">
                     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+                    <xsl:comment><![CDATA[[if lte IE 8]><script src="]]><xsl:value-of select="$root"/><![CDATA[js/excanvas.min.js"></script><![endif]]]></xsl:comment>
                     <script src="{$root}js/jquery.flot.min.js"></script>
-                    <xsl:comment>[if lte IE 8]</xsl:comment><script language="javascript" type="text/javascript" src="{$root}js/excanvas.min.js"></script><xsl:comment>[endif]</xsl:comment>
                 </xsl:with-param>
 
             </xsl:call-template>
