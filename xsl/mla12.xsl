@@ -133,15 +133,15 @@
                         <li>Contributors: <xsl:value-of select="count(distinct-values(tweet/from_user))"/></li>
                         <li>Hashtags: <xsl:value-of select="count(distinct-values(tweet/hashtags/hashtag))"/></li>
                         <li>Links: <xsl:value-of select="count(tweet/urls/url)"/></li>
-                        <li>Photos/videos: <xsl:value-of select="count(tweet[media/*])"/></li>
+                        <li>Photos and videos: <xsl:value-of select="count(tweet[media/*])"/></li>
                         <li>Top 10 contributors: <xsl:value-of select="round((number($users-10) div number($total))*1000) div 10"/>% of total tweets</li>
                         <li>Top 50 contributors: <xsl:value-of select="round((number($users-50) div number($total))*1000) div 10"/>% of total tweets</li>
                     </ul>
 
-                    <h3>Timeline</h3>
-                    <h4>8 December – 2 February, Daily</h4>
+                    <h3>Time line</h3>
+                    <h4>8 December – 2 February, daily</h4>
                     <div id="graph"></div>
-                    <h4>4 January – 9 January, Hourly</h4>
+                    <h4>4 January – 9 January, hourly</h4>
                     <div id="graph-convention"></div>
                     <h3>Word cloud</h3>
                     <p><a href="{$root}img/mla12_words.png"><img src="{$root}img/mla12_words.small.png" height="201" width="450" border="1" alt="#mla12 word cloud"/></a></p>
