@@ -19,7 +19,7 @@
                 <xsl:with-param name="mode">days</xsl:with-param>
 
                 <xsl:with-param name="title">
-                    <h2>Twitter Archive</h2>
+                    <h2><em>Twitter</em> Archive</h2>
                 </xsl:with-param>
                 
                 <xsl:with-param name="content">
@@ -148,7 +148,7 @@
                     <h3>Thanks</h3>
                     <p>Many thanks are due to <a href="http://twitter.com/samplereality">Mark Sample</a>, <a href="http://mashe.hawksey.info/2012/01/twitter-archive-tagsv3/">Martin Hawksey</a>, and <a href="http://www.jenmichaels.net/blog/?p=622">Jen Michaels</a> for contributions to this archive.</p>
                     <h3>Data and source code</h3>
-                    <p>The XML and XSL used to generate this archive are <a href="http://github.com/mlaa/mla12-twitter">available on Github</a>.</p>
+                    <p>The XML and XSL used to generate this archive are <a href="http://github.com/mlaa/mla12-twitter">available on <em>Github</em></a>.</p>
                     <p>&#160;</p>
 
                     <xsl:variable name="data-all">
@@ -348,7 +348,7 @@
                                 
                             </xsl:if>
                             
-                            <p><a href="http://twitter.com/{current-grouping-key()}">Visit @<xsl:value-of select="current-grouping-key()"/> at Twitter.</a></p>
+                            <p><a href="http://twitter.com/{current-grouping-key()}">Visit @<xsl:value-of select="current-grouping-key()"/> at <em>Twitter</em>.</a></p>
                             
                             <xsl:if test="number($tweets) &gt; 15">
                                 <p class="top"><a href="#tabs">Back to top ↑</a></p>
@@ -483,7 +483,7 @@
                                     
                                 </xsl:if>
 
-                                <p><a href="https://twitter.com/#!/search?q=%23{current-grouping-key()}">Search for #<xsl:value-of select="current-grouping-key()"/> at Twitter.</a></p>
+                                <p><a href="https://twitter.com/#!/search?q=%23{current-grouping-key()}">Search for #<xsl:value-of select="current-grouping-key()"/> at <em>Twitter</em>.</a></p>
                                 
                                 <xsl:if test="number($tweets) &gt; 15">
                                     <p class="top"><a href="#tabs">Back to top ↑</a></p>
